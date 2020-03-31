@@ -16,7 +16,9 @@ input[type=text]:focus{
 }
 .delete{
   cursor: pointer;
+  padding-left: 1%;
 }
 .filtered {
   display: none !important;
 }
+
