@@ -2,6 +2,7 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
 
+//add todos 
 
 // creates a html template which also includes the value (todo) being inputted by the user
 const generateTemplate= todo => {
@@ -30,4 +31,14 @@ addForm.addEventListener('submit', e => {
     addForm.reset();
   }
    
+});
+
+// delete todos
+// use event delegation
+// if the clicked on element within the form has a class of delete, then delete the parent element of that element
+list.addEventListener('click', e => {
+  if(e.target.classList.contains('delete')){
+    e.target.parentElement.remove();
+  }
+
 });
