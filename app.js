@@ -1,6 +1,9 @@
-// get the form element and the ul element by accessing their classes
+// get the form element with a class of add
 const addForm = document.querySelector('.add');
+// get the ul element
 const list = document.querySelector('.todos');
+// get the input element of the form with a class of search
+const search = document.querySelector('.search input');
 
 //add todos 
 
@@ -41,4 +44,25 @@ list.addEventListener('click', e => {
     e.target.parentElement.remove();
   }
 
+});
+// create a function to do something with the  search input from a user
+const filterTodos = (term) => {
+ // get an array from the html collection of li's inside the ul
+ Array.from(list.children)
+  // filter each li (eachChild) by checking if its text content doesn't include the inputted characters from the user, if it doesn't; add the 'filtered' class
+  .filter((eachChild) => !eachChild.textContent.toLowerCase.includes(term))
+  .forEach((eachChild) => eachChild.classList.add('filtered'));
+
+ Array.from(list.children)
+ // filter each li (eachChild) by checking if its text content does include the inputted characters from the user, if it does; remove the 'filtered' class
+  .filter((eachChild) => eachChild.textContent.toLowerCase.includes(term))
+  .forEach((eachChild) => eachChild.classList.remove('filtered'));
+};
+
+// search todos using keyup event
+search.addEventListener('keyup', () => {
+ // get and store the inputted character(s) from the user, remove whitespace & convert to lowercase
+ const term = search.value.trim().toLowerCase;
+ // call the function
+ filterTodos(term);
 });
